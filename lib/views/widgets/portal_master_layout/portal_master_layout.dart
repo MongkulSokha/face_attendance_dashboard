@@ -231,7 +231,7 @@ class ResponsiveAppBarTitle extends StatelessWidget {
                 padding: const EdgeInsets.only(right: kDefaultPadding * 0.7),
                 height: 40.0,
                 child: Image.asset(
-                  'assets/images/app_logo.png',
+                  'assets/icons/icon.jpg',
                   fit: BoxFit.contain,
                 ),
               ),

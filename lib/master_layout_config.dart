@@ -52,11 +52,6 @@ final sidebarMenuConfigs = [
       ),
     ],
   ),
-  SidebarMenuConfig(
-    uri: RouteUri.iframe,
-    icon: Icons.laptop_windows_rounded,
-    title: (context) => Lang.of(context).iframeDemo,
-  ),
 ];
 
 const localeMenuConfigs = [

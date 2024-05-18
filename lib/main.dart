@@ -27,6 +27,7 @@ Future main() async {
   } else {
     await Firebase.initializeApp();
   }
+
   runApp(RootApp());
 }
 

@@ -53,28 +53,6 @@ final sidebarMenuConfigs = [
     ],
   ),
   SidebarMenuConfig(
-    uri: '',
-    icon: Icons.library_books_rounded,
-    title: (context) => Lang.of(context).pages(2),
-    children: [
-      SidebarChildMenuConfig(
-        uri: RouteUri.error404,
-        icon: Icons.circle_outlined,
-        title: (context) => Lang.of(context).error404,
-      ),
-      SidebarChildMenuConfig(
-        uri: RouteUri.login,
-        icon: Icons.circle_outlined,
-        title: (context) => Lang.of(context).login,
-      ),
-      SidebarChildMenuConfig(
-        uri: RouteUri.register,
-        icon: Icons.circle_outlined,
-        title: (context) => Lang.of(context).register,
-      ),
-    ],
-  ),
-  SidebarMenuConfig(
     uri: RouteUri.iframe,
     icon: Icons.laptop_windows_rounded,
     title: (context) => Lang.of(context).iframeDemo,

@@ -12,45 +12,13 @@ final sidebarMenuConfigs = [
   ),
   SidebarMenuConfig(
     uri: RouteUri.crud,
-    icon: Icons.circle_outlined,
-    title: (context) => 'CRUD',
+    icon: Icons.people,
+    title: (context) => 'Student',
   ),
   SidebarMenuConfig(
-    uri: RouteUri.form,
-    icon: Icons.edit_note_rounded,
-    title: (context) => Lang.of(context).forms(1),
-  ),
-  SidebarMenuConfig(
-    uri: '',
-    icon: Icons.interests_rounded,
-    title: (context) => Lang.of(context).uiElements(2),
-    children: [
-      SidebarChildMenuConfig(
-        uri: RouteUri.generalUi,
-        icon: Icons.circle_outlined,
-        title: (context) => Lang.of(context).generalUi,
-      ),
-      SidebarChildMenuConfig(
-        uri: RouteUri.colors,
-        icon: Icons.circle_outlined,
-        title: (context) => Lang.of(context).colors(2),
-      ),
-      SidebarChildMenuConfig(
-        uri: RouteUri.text,
-        icon: Icons.circle_outlined,
-        title: (context) => Lang.of(context).text,
-      ),
-      SidebarChildMenuConfig(
-        uri: RouteUri.buttons,
-        icon: Icons.circle_outlined,
-        title: (context) => Lang.of(context).buttons(2),
-      ),
-      SidebarChildMenuConfig(
-        uri: RouteUri.dialogs,
-        icon: Icons.circle_outlined,
-        title: (context) => Lang.of(context).dialogs(2),
-      ),
-    ],
+    uri: RouteUri.register,
+    icon: Icons.app_registration,
+    title: (context) => 'Register Account',
   ),
 ];
 
@@ -60,13 +28,7 @@ const localeMenuConfigs = [
     name: 'English',
   ),
   LocaleMenuConfig(
-    languageCode: 'zh',
-    scriptCode: 'Hans',
-    name: '中文 (简体)',
-  ),
-  LocaleMenuConfig(
-    languageCode: 'zh',
-    scriptCode: 'Hant',
-    name: '中文 (繁體)',
+    languageCode: 'km',
+    name: 'ខ្មែរ',
   ),
 ];

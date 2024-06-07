@@ -50,6 +50,53 @@ class Lang {
     return Localizations.of<Lang>(context, Lang);
   }
 
+
+  /// subject
+  String subject(num count) {
+    return Intl.plural(
+      count,
+      one: 'Subject',
+      other: 'Subjects',
+      name: 'subjects',
+      desc: '',
+      args: [count],
+    );
+  }
+
+  /// students
+  String students(num count) {
+    return Intl.plural(
+      count,
+      one: 'Student',
+      other: 'Students',
+      name: 'students',
+      desc: '',
+      args: [count],
+    );
+  }
+
+  /// `{count, plural, one{New User} other{New Users}}`
+  String newUsers(num count) {
+    return Intl.plural(
+      count,
+      one: 'Faculty',
+      other: 'Faculties',
+      name: 'faculties',
+      desc: '',
+      args: [count],
+    );
+  }
+
+  /// mayors
+  String get mayors {
+    return Intl.message(
+      'Mayors',
+      name: 'mayors',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Account`
   String get account {
     return Intl.message(
@@ -73,7 +120,7 @@ class Lang {
   /// `Web Admin`
   String get appTitle {
     return Intl.message(
-      'Web Admin',
+      'Dashboard',
       name: 'appTitle',
       desc: '',
       args: [],
@@ -574,25 +621,15 @@ class Lang {
   String newOrders(num count) {
     return Intl.plural(
       count,
-      one: 'New Order',
-      other: 'New Orders',
-      name: 'newOrders',
+      one: 'Student',
+      other: 'Students',
+      name: 'students',
       desc: '',
       args: [count],
     );
   }
 
-  /// `{count, plural, one{New User} other{New Users}}`
-  String newUsers(num count) {
-    return Intl.plural(
-      count,
-      one: 'New User',
-      other: 'New Users',
-      name: 'newUsers',
-      desc: '',
-      args: [count],
-    );
-  }
+
 
   /// `This field value must not be equal to {value}.`
   String notEqualErrorText(Object value) {
@@ -663,30 +700,6 @@ class Lang {
       name: 'passwordNotMatch',
       desc: '',
       args: [],
-    );
-  }
-
-  /// `{count, plural, one{Pending Issue} other{Pending Issues}}`
-  String pendingIssues(num count) {
-    return Intl.plural(
-      count,
-      one: 'Pending Issue',
-      other: 'Pending Issues',
-      name: 'pendingIssues',
-      desc: '',
-      args: [count],
-    );
-  }
-
-  /// `{count, plural, one{Recent Order} other{Recent Orders}}`
-  String recentOrders(num count) {
-    return Intl.plural(
-      count,
-      one: 'Recent Order',
-      other: 'Recent Orders',
-      name: 'recentOrders',
-      desc: '',
-      args: [count],
     );
   }
 
@@ -830,16 +843,6 @@ class Lang {
     );
   }
 
-  /// `Today Sales`
-  String get todaySales {
-    return Intl.message(
-      'Today Sales',
-      name: 'todaySales',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Typography`
   String get typography {
     return Intl.message(
@@ -899,7 +902,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<Lang> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
-      Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'),
+      Locale.fromSubtags(languageCode: 'km'),
       Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant'),
     ];
   }

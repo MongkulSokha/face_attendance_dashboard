@@ -2,19 +2,11 @@ import 'package:face_attendance_dashboard/views/screens/login_screen.dart';
 import 'package:face_attendance_dashboard/views/screens/register_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:face_attendance_dashboard/providers/user_data_provider.dart';
-import 'package:face_attendance_dashboard/views/screens/buttons_screen.dart';
-import 'package:face_attendance_dashboard/views/screens/colors_screen.dart';
-import 'package:face_attendance_dashboard/views/screens/crud_detail_screen.dart';
+import 'package:face_attendance_dashboard/views/screens/crud_add_screen.dart';
 import 'package:face_attendance_dashboard/views/screens/crud_screen.dart';
 import 'package:face_attendance_dashboard/views/screens/dashboard_screen.dart';
-import 'package:face_attendance_dashboard/views/screens/dialogs_screen.dart';
 import 'package:face_attendance_dashboard/views/screens/error_screen.dart';
-import 'package:face_attendance_dashboard/views/screens/form_screen.dart';
-import 'package:face_attendance_dashboard/views/screens/general_ui_screen.dart';
-import 'package:face_attendance_dashboard/views/screens/iframe_demo_screen.dart';
 import 'package:face_attendance_dashboard/views/screens/logout_screen.dart';
-import 'package:face_attendance_dashboard/views/screens/my_profile_screen.dart';
-import 'package:face_attendance_dashboard/views/screens/text_screen.dart';
 
 class RouteUri {
   static const String home = '/';
@@ -67,59 +59,10 @@ GoRouter appRouter(UserDataProvider userDataProvider) {
         ),
       ),
       GoRoute(
-        path: RouteUri.myProfile,
-        pageBuilder: (context, state) => NoTransitionPage<void>(
-          key: state.pageKey,
-          child: const MyProfileScreen(),
-        ),
-      ),
-      GoRoute(
         path: RouteUri.logout,
         pageBuilder: (context, state) => NoTransitionPage<void>(
           key: state.pageKey,
           child: const LogoutScreen(),
-        ),
-      ),
-      GoRoute(
-        path: RouteUri.form,
-        pageBuilder: (context, state) => NoTransitionPage<void>(
-          key: state.pageKey,
-          child: const FormScreen(),
-        ),
-      ),
-      GoRoute(
-        path: RouteUri.generalUi,
-        pageBuilder: (context, state) => NoTransitionPage<void>(
-          key: state.pageKey,
-          child: const GeneralUiScreen(),
-        ),
-      ),
-      GoRoute(
-        path: RouteUri.colors,
-        pageBuilder: (context, state) => NoTransitionPage<void>(
-          key: state.pageKey,
-          child: const ColorsScreen(),
-        ),
-      ),
-      GoRoute(
-        path: RouteUri.text,
-        pageBuilder: (context, state) => NoTransitionPage<void>(
-          key: state.pageKey,
-          child: const TextScreen(),
-        ),
-      ),
-      GoRoute(
-        path: RouteUri.buttons,
-        pageBuilder: (context, state) => NoTransitionPage<void>(
-          key: state.pageKey,
-          child: const ButtonsScreen(),
-        ),
-      ),
-      GoRoute(
-        path: RouteUri.dialogs,
-        pageBuilder: (context, state) => NoTransitionPage<void>(
-          key: state.pageKey,
-          child: const DialogsScreen(),
         ),
       ),
       GoRoute(
@@ -152,16 +95,9 @@ GoRouter appRouter(UserDataProvider userDataProvider) {
         pageBuilder: (context, state) {
           return NoTransitionPage<void>(
             key: state.pageKey,
-            child: CrudDetailScreen(id: state.uri.queryParameters['id'] ?? ''),
+            child: CrudAddScreen(id: state.uri.queryParameters['id'] ?? ''),
           );
         },
-      ),
-      GoRoute(
-        path: RouteUri.iframe,
-        pageBuilder: (context, state) => NoTransitionPage<void>(
-          key: state.pageKey,
-          child: const IFrameDemoScreen(),
-        ),
       ),
     ],
     redirect: (context, state) {

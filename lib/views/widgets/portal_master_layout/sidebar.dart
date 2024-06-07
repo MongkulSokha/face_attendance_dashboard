@@ -36,7 +36,6 @@ class SidebarChildMenuConfig {
 class Sidebar extends StatefulWidget {
   final bool autoSelectMenu;
   final String? selectedMenuUri;
-  final void Function() onAccountButtonPressed;
   final void Function() onLogoutButtonPressed;
   final List<SidebarMenuConfig> sidebarConfigs;
 
@@ -44,7 +43,6 @@ class Sidebar extends StatefulWidget {
     super.key,
     this.autoSelectMenu = true,
     this.selectedMenuUri,
-    required this.onAccountButtonPressed,
     required this.onLogoutButtonPressed,
     required this.sidebarConfigs,
   });
@@ -110,7 +108,6 @@ class _SidebarState extends State<Sidebar> {
                   ),
                   children: [
                     SidebarHeader(
-                      onAccountButtonPressed: widget.onAccountButtonPressed,
                       onLogoutButtonPressed: widget.onLogoutButtonPressed,
                     ),
                     Padding(
@@ -304,12 +301,10 @@ class _SidebarState extends State<Sidebar> {
 }
 
 class SidebarHeader extends StatelessWidget {
-  final void Function() onAccountButtonPressed;
   final void Function() onLogoutButtonPressed;
 
   const SidebarHeader({
     super.key,
-    required this.onAccountButtonPressed,
     required this.onLogoutButtonPressed,
   });
 
@@ -355,7 +350,6 @@ class SidebarHeader extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                _textButton(themeData, sidebarTheme, Icons.manage_accounts_rounded, lang.account, onAccountButtonPressed),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 4.0),
                   child: VerticalDivider(

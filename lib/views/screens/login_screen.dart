@@ -27,6 +27,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   var _isFormLoading = false;
 
+  bool isPasswordVisible = false;
+
   Future<void> _doLoginAsync({
     required UserDataProvider userDataProvider,
     required VoidCallback onSuccess,
@@ -151,9 +153,20 @@ class _LoginScreenState extends State<LoginScreen> {
                                 hintText: lang.password,
                                 border: const OutlineInputBorder(),
                                 floatingLabelBehavior: FloatingLabelBehavior.always,
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                  isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                                    color: const Color(0xff1d83ec),
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      isPasswordVisible = !isPasswordVisible;
+                                    });
+                                  },
+                                ),
                               ),
                               enableSuggestions: false,
-                              obscureText: true,
+                              obscureText: !isPasswordVisible,
                               validator: FormBuilderValidators.required(),
                               onSaved: (value) => (_formData.password = value ?? ''),
                             ),
@@ -176,31 +189,31 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                           ),
-                          SizedBox(
-                            height: 40.0,
-                            width: double.infinity,
-                            child: TextButton(
-                              style: themeData.extension<AppButtonTheme>()!.secondaryText,
-                              onPressed: () => GoRouter.of(context).go(RouteUri.register),
-                              child: RichText(
-                                text: TextSpan(
-                                  text: '${lang.dontHaveAnAccount} ',
-                                  style: TextStyle(
-                                    color: themeData.colorScheme.onSurface,
-                                  ),
-                                  children: [
-                                    TextSpan(
-                                      text: lang.registerNow,
-                                      style: TextStyle(
-                                        color: themeData.extension<AppColorScheme>()!.hyperlink,
-                                        decoration: TextDecoration.underline,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
+                          // SizedBox(
+                          //   height: 40.0,
+                          //   width: double.infinity,
+                          //   child: TextButton(
+                          //     style: themeData.extension<AppButtonTheme>()!.secondaryText,
+                          //     onPressed: () => GoRouter.of(context).go(RouteUri.register),
+                          //     child: RichText(
+                          //       text: TextSpan(
+                          //         text: '${lang.dontHaveAnAccount} ',
+                          //         style: TextStyle(
+                          //           color: themeData.colorScheme.onSurface,
+                          //         ),
+                          //         children: [
+                          //           TextSpan(
+                          //             text: lang.registerNow,
+                          //             style: TextStyle(
+                          //               color: themeData.extension<AppColorScheme>()!.hyperlink,
+                          //               decoration: TextDecoration.underline,
+                          //             ),
+                          //           ),
+                          //         ],
+                          //       ),
+                          //     ),
+                          //   ),
+                          // ),
                         ],
                       ),
                     ),

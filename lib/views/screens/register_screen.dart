@@ -236,15 +236,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               ),
                             ),
                           ),
-                          SizedBox(
-                            height: 40.0,
-                            width: double.infinity,
-                            child: OutlinedButton(
-                              style: themeData.extension<AppButtonTheme>()!.secondaryOutlined,
-                              onPressed: () => GoRouter.of(context).go(RouteUri.login),
-                              child: Text(lang.backToLogin),
-                            ),
-                          ),
                         ],
                       ),
                     ),

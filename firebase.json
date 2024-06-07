@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "faceattendance",
     "public": "build/web",
     "ignore": [
       "firebase.json",

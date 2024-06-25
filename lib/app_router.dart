@@ -1,5 +1,7 @@
+import 'package:face_attendance_dashboard/views/screens/attendance_screen.dart';
 import 'package:face_attendance_dashboard/views/screens/login_screen.dart';
 import 'package:face_attendance_dashboard/views/screens/register_screen.dart';
+import 'package:face_attendance_dashboard/views/screens/select_map_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:face_attendance_dashboard/providers/user_data_provider.dart';
 import 'package:face_attendance_dashboard/views/screens/crud_add_screen.dart';
@@ -24,7 +26,8 @@ class RouteUri {
   static const String register = '/register';
   static const String crud = '/crud';
   static const String crudDetail = '/crud-detail';
-  static const String iframe = '/iframe';
+  static const String attendanceScreen = '/attendance';
+  static const String mapScreen = '/map';
 }
 
 const List<String> unrestrictedRoutes = [
@@ -96,6 +99,24 @@ GoRouter appRouter(UserDataProvider userDataProvider) {
           return NoTransitionPage<void>(
             key: state.pageKey,
             child: CrudAddScreen(id: state.uri.queryParameters['id'] ?? ''),
+          );
+        },
+      ),
+      GoRoute(
+        path: RouteUri.attendanceScreen,
+        pageBuilder: (context, state) {
+          return NoTransitionPage<void>(
+            key: state.pageKey,
+            child: const AttendanceScreen(),
+          );
+        },
+      ),
+      GoRoute(
+        path: RouteUri.mapScreen,
+        pageBuilder: (context, state) {
+          return NoTransitionPage<void>(
+            key: state.pageKey,
+            child: const LocationSelectionScreen(),
           );
         },
       ),

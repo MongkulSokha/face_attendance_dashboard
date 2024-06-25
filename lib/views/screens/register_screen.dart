@@ -11,7 +11,8 @@ import 'package:face_attendance_dashboard/generated/l10n.dart';
 import 'package:face_attendance_dashboard/providers/user_data_provider.dart';
 import 'package:face_attendance_dashboard/theme/theme_extensions/app_button_theme.dart';
 import 'package:face_attendance_dashboard/utils/app_focus_helper.dart';
-import 'package:face_attendance_dashboard/views/widgets/public_master_layout/public_master_layout.dart';
+import 'package:face_attendance_dashboard/views/widgets/card_elements.dart';
+import 'package:face_attendance_dashboard/views/widgets/portal_master_layout/portal_master_layout.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -48,7 +49,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
         // Set user data in provider
         await userDataProvider.setUserDataAsync(
-          username: _formData.username,
           userProfileImageUrl: 'https://picsum.photos/id/1005/300/300',
         );
 
@@ -100,60 +100,34 @@ class _RegisterScreenState extends State<RegisterScreen> {
     final lang = Lang.of(context);
     final themeData = Theme.of(context);
 
-    return PublicMasterLayout(
-      body: SingleChildScrollView(
-        child: Align(
-          alignment: Alignment.topCenter,
-          child: Container(
-            padding: const EdgeInsets.only(top: kDefaultPadding * 5.0),
-            constraints: const BoxConstraints(maxWidth: 400.0),
+    final pageTitle = lang.registerANewAccount;
+
+    return PortalMasterLayout(
+      selectedMenuUri: RouteUri.register,
+      body: ListView(
+        padding: const EdgeInsets.all(kDefaultPadding),
+        children: [
+          Text(
+            pageTitle,
+            style: themeData.textTheme.headlineMedium,
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: kDefaultPadding),
             child: Card(
               clipBehavior: Clip.antiAlias,
-              child: Padding(
-                padding: const EdgeInsets.all(kDefaultPadding),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: kDefaultPadding),
-                      child: Image.asset(
-                        'assets/icons/icon.jpg',
-                        height: 80.0,
-                      ),
-                    ),
-                    Text(
-                      lang.appTitle,
-                      style: themeData.textTheme.headlineMedium!.copyWith(
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: kDefaultPadding * 2.0),
-                      child: Text(
-                        lang.registerANewAccount,
-                        style: themeData.textTheme.titleMedium,
-                      ),
-                    ),
-                    FormBuilder(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CardHeader(
+                    title: pageTitle,
+                  ),
+                  CardBody(
+                    child: FormBuilder(
                       key: _formKey,
                       autovalidateMode: AutovalidateMode.disabled,
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: kDefaultPadding * 1.5),
-                            child: FormBuilderTextField(
-                              name: 'username',
-                              decoration: InputDecoration(
-                                labelText: lang.username,
-                                hintText: lang.username,
-                                border: const OutlineInputBorder(),
-                                floatingLabelBehavior: FloatingLabelBehavior.always,
-                              ),
-                              enableSuggestions: false,
-                              validator: FormBuilderValidators.required(),
-                              onSaved: (value) => (_formData.username = value ?? ''),
-                            ),
-                          ),
                           Padding(
                             padding: const EdgeInsets.only(bottom: kDefaultPadding * 1.5),
                             child: FormBuilderTextField(
@@ -212,7 +186,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   if (_formKey.currentState?.fields['password']?.value != value) {
                                     return lang.passwordNotMatch;
                                   }
-
                                   return null;
                                 },
                               ]),
@@ -239,19 +212,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ],
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }
 }
 
 class FormData {
-  String username = '';
   String email = '';
   String password = '';
 }

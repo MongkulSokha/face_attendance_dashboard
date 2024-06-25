@@ -289,8 +289,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                         columns: const [
                                           DataColumn(label: Text('No.'), numeric: true),
                                           DataColumn(label: Text('ID'), numeric: true),
-                                          DataColumn(label: Text('FirstName')),
-                                          DataColumn(label: Text('LastName')),
+                                          DataColumn(label: Text('Khmer Name')),
+                                          DataColumn(label: Text('English Name')),
                                           DataColumn(label: Text('BirthDate')),
                                           DataColumn(label: Text('Address')),
                                           DataColumn(label: Text('Department')),
@@ -298,13 +298,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                         rows: List.generate(items.length,
                                             (index) {
                                           final item = items[index];
+                                          final englishName = '${item['firstName'] ?? 'N/A'} ${item['lastName'] ?? 'N/A'}';
                                           return DataRow.byIndex(
                                             index: index,
                                             cells: [
                                               DataCell(Text('#${index + 1}')),
                                               DataCell(Text('${item['id'] ?? 'N/A'}')),
-                                              DataCell(Text(item['firstName'] ?? 'N/A')),
-                                              DataCell(Text(item['lastName'] ?? 'N/A')),
+                                              DataCell(Text(item['khmerName'] ?? 'N/A')),
+                                              DataCell(Text(englishName)),
                                               DataCell(Text(item['birthDate'] ?? 'N/A')),
                                               DataCell(Text(item['address'] ?? 'N/A')),
                                               DataCell(Text(item['department'] ?? 'N/A')),

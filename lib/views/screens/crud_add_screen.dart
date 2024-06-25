@@ -33,6 +33,7 @@ class _CrudAddScreenState extends State<CrudAddScreen> {
   String _id = "";
   String _firstName = "";
   String _lastName = "";
+  String _khmerName = "";
   String _studentId = "";
   String _birthDate = "";
   String _address = "";
@@ -61,6 +62,7 @@ class _CrudAddScreenState extends State<CrudAddScreen> {
             _id = widget.id;
             _firstName = data['firstName'] ?? '';
             _lastName = data['lastName'] ?? '';
+            _khmerName = data['khmerName'] ?? '';
             _studentId = data['id'] ?? '';
             _birthDate = data['birthDate'] ?? '';
             _address = data['address'] ?? '';
@@ -110,6 +112,7 @@ class _CrudAddScreenState extends State<CrudAddScreen> {
             final data = {
               'firstName': _firstName,
               'lastName': _lastName,
+              'khmerName': _khmerName,
               'id': _studentId,
               'birthDate': _birthDate,
               'address': _address,
@@ -282,6 +285,20 @@ class _CrudAddScreenState extends State<CrudAddScreen> {
               ),
               initialValue: _studentId,
               onSaved: (value) => _studentId = value ?? '',
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: kDefaultPadding * 1.5),
+            child: FormBuilderTextField(
+              name: 'khmerName',
+              decoration: const InputDecoration(
+                labelText: 'Khmer Name',
+                hintText: 'Khmer Name',
+                border: OutlineInputBorder(),
+                floatingLabelBehavior: FloatingLabelBehavior.always,
+              ),
+              initialValue: _khmerName,
+              onSaved: (value) => _khmerName = value ?? '',
             ),
           ),
           Padding(

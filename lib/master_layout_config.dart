@@ -16,6 +16,16 @@ final sidebarMenuConfigs = [
     title: (context) => 'Student',
   ),
   SidebarMenuConfig(
+    uri: RouteUri.attendanceScreen,
+    icon: Icons.check_box,
+    title: (context) => 'Attendance',
+  ),
+  SidebarMenuConfig(
+    uri: RouteUri.mapScreen,
+    icon: Icons.map,
+    title: (context) => 'Select Geofence',
+  ),
+  SidebarMenuConfig(
     uri: RouteUri.register,
     icon: Icons.app_registration,
     title: (context) => 'Register Account',
